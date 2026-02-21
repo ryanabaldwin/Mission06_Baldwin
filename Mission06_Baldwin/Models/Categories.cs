@@ -1,3 +1,5 @@
+// model for the category table
+
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 

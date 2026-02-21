@@ -13,7 +13,7 @@ public class MovieFormContext : DbContext
     
     protected override void OnModelCreating(ModelBuilder modelBuilder) // Seed data
     {
-        modelBuilder.Entity<Categories>().HasData(
+        modelBuilder.Entity<Categories>().HasData( // sets category name
             new Categories {CategoryId=1, CategoryName="Miscellaneous"},
             new Categories {CategoryId=2, CategoryName="Drama"},
             new Categories {CategoryId=3, CategoryName="Television"},

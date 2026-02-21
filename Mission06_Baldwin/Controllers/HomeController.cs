@@ -30,7 +30,7 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    public IActionResult MovieForm()
+    public IActionResult MovieForm() // allows for categories to be displayed in the form
     {
         ViewBag.Categories = _context.Categories
             .OrderBy(x => x.CategoryName)
@@ -41,14 +41,14 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult MovieForm(Movie response)
     {
-        if (ModelState.IsValid)
+        if (ModelState.IsValid) // model validation
         {
             _context.Movies.Add(response); // add record to the database and save
             _context.SaveChanges();
 
             return View("Confirmation", response);
         }
-        else
+        else // stops the form from submitting if it's not valid
         {
             ViewBag.Categories = _context.Categories
                 .OrderBy(x => x.CategoryName)
@@ -71,9 +71,9 @@ public class HomeController : Controller
     public IActionResult Edit(int id)
     {
         var recordToEdit = _context.Movies
-            .Single(x => x.MovieId == id);
+            .Single(x => x.MovieId == id); // pulls in record that has been selected to be edited on ID
         
-        ViewBag.Categories = _context.Categories
+        ViewBag.Categories = _context.Categories // once again display categories
             .OrderBy(x => x.CategoryName)
             .ToList();
         
@@ -81,7 +81,7 @@ public class HomeController : Controller
     }
     
     [HttpPost]
-    public IActionResult Edit(Movie updatedInfo)
+    public IActionResult Edit(Movie updatedInfo) // submits the edited entry
     {
         _context.Update(updatedInfo);
         _context.SaveChanges();
@@ -93,7 +93,7 @@ public class HomeController : Controller
     public IActionResult Delete(int id)
     {
         var recordToDelete = _context.Movies
-            .Single(x => x.MovieId == id);
+            .Single(x => x.MovieId == id); // pulls in record that has been selected to be deleted on ID
 
         return View(recordToDelete);
     }
@@ -101,7 +101,7 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult Delete(Movie movie)
     {
-        _context.Movies.Remove(movie);
+        _context.Movies.Remove(movie); // actually deletes the record 
         _context.SaveChanges();
 
         return RedirectToAction("ViewMovieCollection");
