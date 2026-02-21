@@ -22,7 +22,6 @@ public class MovieFormContext : DbContext
             new Categories {CategoryId=6, CategoryName="Family"},
             new Categories {CategoryId=7, CategoryName="Action/Adventure"},
             new Categories {CategoryId=8, CategoryName="VHS"}
-            
         );
     }
 }

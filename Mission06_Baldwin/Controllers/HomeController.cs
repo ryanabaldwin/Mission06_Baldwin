@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Mission6Assignment.Models;
 
 namespace Mission6Assignment.Controllers;
+using Microsoft.EntityFrameworkCore;
 
 public class HomeController : Controller
 {
@@ -60,6 +61,7 @@ public class HomeController : Controller
     {
         // Linq query - a pseudo SQL language
         var movies = _context.Movies
+            .Include(x => x.Category)
             .OrderBy(x => x.Title).ToList();
         
         return View(movies);

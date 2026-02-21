@@ -4,22 +4,25 @@
 
 <table class="table table-bordered">
     <thead class="fw-bold">
-    <td>Category</td>
-    <td>Title</td>
-    <td>Year</td>
-    <td>Director<td>
-    <td>Rating</td>
-    <td>Edited</td>
-    <td>LentTo</td>
-    <td>CopiedToPlex</td>
-    <td>Notes</td>
+    <tr>
+        <td>Category</td>
+        <td>Title</td>
+        <td>Year</td>
+        <td>Director</td>
+        <td>Rating</td>
+        <td>Edited</td>
+        <td>LentTo</td>
+        <td>CopiedToPlex</td>
+        <td>Notes</td>
+        <td>Actions</td>
+    </tr>
     </thead>
     
     @foreach (var a in Model)
     {
         <tbody>
         <tr>
-            <td>@a.Category</td>
+            <td>@(a.Category.CategoryName)</td>
             <td>@a.Title</td>
             <td>@a.Year</td>
             <td>@a.Director</td>
